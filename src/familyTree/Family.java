@@ -1,12 +1,12 @@
 package familyTree;
 
-import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 public class Family {
     private HashMap<String,String> family = new HashMap<>();
     private HashMap<String,String> parent = new HashMap<>();
+    private HashMap<String,String> children = new HashMap<>();
 
     public boolean male(String name) {
         if (!family.containsKey(name)) {
@@ -54,33 +54,38 @@ public class Family {
         }
     }
 
-    public boolean setParent(String childName,String parentName) {
+    public boolean setParentOf(String childName, String parentName) {
         if (!family.containsKey(childName)) {
             family.put(childName,"");
         }
         if (!family.containsKey(parentName)) {
             family.put(parentName,"");
         }
-        if (!parent.containsKey(parentName)) {
+        if (!parent.containsValue(childName)) {
             parent.put(parentName,childName);
+            children.put(childName,parentName);
             return true;
         }
         else {
             return false;
         }
     }
+    public ArrayList getParentsOf(String name) {
+        ArrayList<String> parents = new ArrayList<>();
+        if (parent.containsValue(name)) {
+            String regex = "=" + name;
+            parents.add(parent.toString().replaceAll(regex, "").replaceAll("[{}]", ""));
+            return parents;
+        }
+        return null;
+    }
 
-//    public Array getParents(String name) {
-//        if (parent.containsValue(name)) {
-//
-//        }
-//    }
-
-    public static <K, V> K getKey(Map<K,V> map, V value) {
-        for (Map.Entry<K,V> entry : map.entrySet()) {
-            if (value.equals(entry.getValue())) {
-                return entry.getKey();
-            }
+    public ArrayList getChildrenOf(String name) {
+        ArrayList<String> kids = new ArrayList<>();
+        if (children.containsValue(name)) {
+            String regex = "=" + name;
+            kids.add(children.toString().replaceAll(regex, "").replaceAll("[{}]", ""));
+            return kids;
         }
         return null;
     }
