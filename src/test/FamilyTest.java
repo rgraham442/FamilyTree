@@ -33,4 +33,10 @@ public class FamilyTest {
         assertFalse(fam.isFemale("John"));
     }
 
+    @Test
+    public void setParentShouldReturnTrue() {
+        Family fam = new Family();
+        assertTrue(fam.setParent("John","Lisa"));
+    }
+
 }
