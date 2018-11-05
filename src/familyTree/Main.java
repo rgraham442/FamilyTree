@@ -12,7 +12,8 @@ public class Main {
         System.out.println(fam.isMale("Joy"));
         System.out.println(fam.isFemale("Joy")); // false // (We know Joy is Frank's child, but we can't derive Joy's gender)//
         System.out.println(fam.getChildrenOf("Morgan")); // ["Frank", "July"]
-        System.out.println(fam.setParentOf("Jennifer", "Morgan")); // true fam.getChildrenOf("Morgan"); // ["Frank", "Jennifer", "July"]
+        System.out.println(fam.setParentOf("Jennifer", "Morgan")); // true
+        System.out.println(fam.getChildrenOf("Morgan")); // ["Frank", "Jennifer", "July"]
         System.out.println(fam.getChildrenOf("Dylan")); // ["Frank"] // (That is all we know for sure)
         System.out.println(fam.getParentsOf("Frank")); // ["Dylan", "Morgan"]
         System.out.println(fam.setParentOf("Morgan", "Frank")); // false

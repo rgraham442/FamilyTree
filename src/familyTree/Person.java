@@ -1,9 +1,6 @@
 package familyTree;
 
 
-public class Family {
-
+public class Person {
 
 }
-
-
